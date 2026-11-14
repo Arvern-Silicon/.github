@@ -20,22 +20,24 @@
 
 No proprietary generators, no high-level synthesis wrappers, and no vendor lock-in. Just rock-solid RTL designed by industry veterans who know what it takes to bring a design to mass production.
 
-The ecosystem is partitioned into four modular repositories:
+The ecosystem is partitioned into five modular repositories:
 
 ## Repositories
 
 | Repository | Focus | Description |
 |------------|-------|-------------|
 | 🧠 **[arvern](https://github.com/Arvern-Silicon/arvern)** | **CPU Core** | A single-issue, in-order, 4-stage **RV32I[E]MBC** RISC-V processor. Features optional M/B/C extensions, S+U privilege modes, PMP with Smepmp, Smrnmi resumable NMI, double-trap handling, hardware counters, **RISC-V Debug 1.0** external debug with Sdtrig triggers, and dual AHB-Lite manager interfaces. Highly parameterized to let designers dial in their perfect sweet spot between silicon area, frequency, and IPC. |
-| 🧩 **[arvern-ips](https://github.com/Arvern-Silicon/arvern-ips)** | **IP Library** | Reusable AHB-Lite building blocks: a multi-manager interconnect fabric, ROM/SRAM controllers, ACLINT timer, PLIC interrupt controller, a custom-CSR peripheral, a reusable peripheral template, and the debug transport modules (**JTAG, cJTAG, UART and I2C**) that connect a host to the core's Debug Module. |
-| 🔌 **[arvern-soc](https://github.com/Arvern-Silicon/arvern-soc)** | **Reference SoCs** | End-to-end integration examples: an ASIC chip example for synthesis and implementation trials, and a working FPGA system for the Terasic **DE0-Nano-SoC** board with firmware, external debug over any of the four transports, and prebuilt bitstreams. |
+| 🧩 **[arvern-ips](https://github.com/Arvern-Silicon/arvern-ips)** | **IP Library** | Reusable AHB-Lite building blocks: a multi-manager interconnect fabric, ROM/SRAM controllers, ACLINT timer, PLIC interrupt controller, an AHB-to-APB bridge with **GPIO, I2S audio, SPI and a USB host** for HID devices, peripheral templates, a custom-CSR peripheral, and the debug transport modules (**JTAG, cJTAG, UART and I2C**) that connect a host to the core's Debug Module. |
+| 🖥️ **[arvern-belenos](https://github.com/Arvern-Silicon/arvern-belenos)** | **Graphics** | Belenos, a frame-buffer graphic controller with an optional 2D GPU: fills, copies, blending, textured and affine blits, lines and a hardware cursor, with built-in MIPI-DBI, MIPI-DPI and HDMI drivers, a C driver and an LVGL v9 driver. Five personas scale it from a display controller to a GPU for games. A 0.1.0 preview. |
+| 🔌 **[arvern-soc](https://github.com/Arvern-Silicon/arvern-soc)** | **Reference SoCs** | End-to-end integration examples: an ASIC chip example for synthesis and implementation trials, a working FPGA system for the Terasic **DE0-Nano-SoC** with an LCD, and a small game console on the Sipeed **Tang Console 138K** (LCD or HDMI, USB, audio, microSD, games and LVGL), each with firmware, external debug and prebuilt bitstreams. |
 | 🛠️ **[arvern-tools](https://github.com/Arvern-Silicon/arvern-tools)** | **Host Tools** | Python host-side debug tools for Windows, Linux and macOS: a firmware loader, a command-line debugger, a GDB server for GDB, CLion or VS Code, and a GUI. They drive the UART, I2C and JTAG debug links over ordinary USB adapters. |
 
 ## Where to start
 
 - **Exploring the architecture?** Read the [**arvern**](https://github.com/Arvern-Silicon/arvern) core README for the ISA specs, CSR inventory, and performance configuration options.
 - **Building a custom system?** Grab the modular building blocks you need from [**arvern-ips**](https://github.com/Arvern-Silicon/arvern-ips).
-- **Want to see it run?** Check out [**arvern-soc**](https://github.com/Arvern-Silicon/arvern-soc) for the DE0-Nano-SoC FPGA system and the ASIC synthesis example.
+- **Need a display?** [**arvern-belenos**](https://github.com/Arvern-Silicon/arvern-belenos) drives LCDs and HDMI, with a GPU, a C driver and LVGL.
+- **Want to see it run?** Check out [**arvern-soc**](https://github.com/Arvern-Silicon/arvern-soc) for the DE0-Nano-SoC and Tang Console 138K FPGA systems and the ASIC synthesis example.
 - **Debugging firmware?** Connect to the core with OpenOCD or a J-Link, or with [**arvern-tools**](https://github.com/Arvern-Silicon/arvern-tools) over UART, I2C or JTAG.
 
 ## Verification
@@ -46,7 +48,7 @@ The ecosystem is partitioned into four modular repositories:
 
 ## Latest releases
 
-What changed, and how to upgrade from the preview: the release notes of the [core](https://github.com/Arvern-Silicon/arvern/blob/main/CHANGELOG.md), [IPs](https://github.com/Arvern-Silicon/arvern-ips/blob/main/CHANGELOG.md), [SoC examples](https://github.com/Arvern-Silicon/arvern-soc/blob/main/CHANGELOG.md) and [tools](https://github.com/Arvern-Silicon/arvern-tools/blob/main/CHANGELOG.md).
+What changed, and how to upgrade from the preview: the release notes of the [core](https://github.com/Arvern-Silicon/arvern/blob/main/CHANGELOG.md), [IPs](https://github.com/Arvern-Silicon/arvern-ips/blob/main/CHANGELOG.md), [SoC examples](https://github.com/Arvern-Silicon/arvern-soc/blob/main/CHANGELOG.md), [graphics](https://github.com/Arvern-Silicon/arvern-belenos/blob/main/CHANGELOG.md) and [tools](https://github.com/Arvern-Silicon/arvern-tools/blob/main/CHANGELOG.md).
 
 ## License
 
